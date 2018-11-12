@@ -1,12 +1,13 @@
+#include <vga.h>
+
 void main(void) {
-  unsigned short *screen = (unsigned short *)0xb8000;
+  const char *message = "Starting minos!";
 
-  char *msg = "Starting Minos!";
-  char ch;
-  char attr = 0x0f;
-
-  while (ch = *msg++) {
-    *screen++ = ((attr) << 8) | ch;
+  int x = 0;
+  while (message[x] != '\x00') {
+    vga_write_with_prop(x, 0, message[x], VGA_COLOR(VGA_BLACK, VGA_WHITE));
+    x++;
   }
+
   return;
 }

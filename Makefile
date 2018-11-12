@@ -5,7 +5,8 @@ KERN_DIR = ./kern
 
 OBJS = $(BOOT_DIR)/head.o \
 			 $(BOOT_DIR)/boot.o \
-			 $(KERN_DIR)/kern.o
+			 $(KERN_DIR)/kern.o \
+			 $(KERN_DIR)/vga.o
 
 all: minos.iso
 
@@ -18,6 +19,7 @@ minos.elf: build $(OBJS)
 
 build:
 	cd $(BOOT_DIR) && make
+	cd $(KERN_DIR) && make
 
 qemu: minos.iso
 	qemu-system-x86_64 -drive format=raw,file=$<

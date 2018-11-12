@@ -1,6 +1,8 @@
 include ../Makefile.inc
 
-OBJS = kern.o
+CFLAGS += -I../include -I.
+
+OBJS = kern.o vga.o
 
 all: $(OBJS)
 
@@ -11,4 +13,4 @@ all: $(OBJS)
 	$(AS) $(ASFLAGS) $< -o $@
 
 clean:
-	rm -f kern.o
+	rm -f $(OBJS)
