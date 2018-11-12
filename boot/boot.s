@@ -10,7 +10,7 @@ STACK_SIZE equ 4096
 section .text
 start:
   ; setup stack
-  mov esp, stack + STACK_SIZE - 4
+  mov esp, stack_top
 
   ; call c function
   call main
@@ -21,4 +21,6 @@ loop:
 
 ; .bss section
 section .bss
-  stack resb STACK_SIZE
+stack_bottom:
+  resb STACK_SIZE
+stack_top:

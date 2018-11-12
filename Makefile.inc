@@ -1,5 +1,6 @@
 # toolchain prefix
-PFX=$(HOME)/opt/xv6-toolchain/bin/i386-elf-
+#PFX=$(HOME)/opt/xv6-toolchain/bin/i386-elf-
+PFX=
 
 AS=nasm
 ASFLAGS=-felf32

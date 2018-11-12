@@ -1,4 +1,4 @@
-ENTRY(kentry)
+ENTRY(start)
 
 SECTIONS {
   . = 1M;
@@ -14,7 +14,7 @@ SECTIONS {
     *(.text)
   }
 
-  .bss :
+  .bss ALIGN(0x1000) :
   {
     *(.bss)
   }

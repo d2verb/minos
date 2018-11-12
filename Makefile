@@ -6,7 +6,8 @@ KERN_DIR = ./kern
 OBJS = $(BOOT_DIR)/head.o \
 			 $(BOOT_DIR)/boot.o \
 			 $(KERN_DIR)/kern.o \
-			 $(KERN_DIR)/vga.o
+			 $(KERN_DIR)/vga.o \
+			 $(KERN_DIR)/printk.o \
 
 all: minos.iso
 
@@ -23,6 +24,9 @@ build:
 
 qemu: minos.iso
 	qemu-system-x86_64 -drive format=raw,file=$<
+
+qemu-gdb: minos.iso
+	qemu-system-x86_64 -drive format=raw,file=$< -nographic -serial mon:stdio -s -S
 
 clean:
 	cd $(BOOT_DIR) && make clean
