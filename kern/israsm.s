@@ -1,5 +1,5 @@
-[bits 32]
-[extern isr_handler]
+bits 32
+extern isr_main
 
 section .text
 isr_common_stub:
@@ -16,7 +16,7 @@ isr_common_stub:
   mov fs, ax
   mov gs, ax
 
-  call isr_handler
+  call isr_main
 
   ; restore old ds
   pop eax

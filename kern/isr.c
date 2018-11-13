@@ -1,6 +1,6 @@
 #include <printk.h>
 #include <isr.h>
 
-void isr_handler(struct trapframe tf) {
+void isr_main(struct trapframe tf) {
   printk("interrupt occured: %d\n", tf.int_no);
 }
