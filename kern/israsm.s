@@ -1,217 +1,226 @@
 [bits 32]
-[extern isr_common]
+[extern isr_handler]
 
 section .text
-isr_entry:
+isr_common_stub:
   pusha
+
+  ; save old ds
   mov ax, ds
   push eax
+
+  ; set kernel ds
   mov ax, 0x18
   mov ds, ax
   mov es, ax
   mov fs, ax
   mov gs, ax
 
-  call isr_common
+  call isr_handler
 
+  ; restore old ds
   pop eax
   mov ds, ax
   mov es, ax
   mov fs, ax
   mov gs, ax
+
   popa
+
+  ; clean stack pushed by `isrx`
   add esp, 8
+
   iret
 
-global isr0_entry
-global isr1_entry
-global isr2_entry
-global isr3_entry
-global isr4_entry
-global isr5_entry
-global isr6_entry
-global isr7_entry
-global isr8_entry
-global isr9_entry
-global isr10_entry
-global isr11_entry
-global isr12_entry
-global isr13_entry
-global isr14_entry
-global isr15_entry
-global isr16_entry
-global isr17_entry
-global isr18_entry
-global isr19_entry
-global isr20_entry
-global isr21_entry
-global isr22_entry
-global isr23_entry
-global isr24_entry
-global isr25_entry
-global isr26_entry
-global isr27_entry
-global isr28_entry
-global isr29_entry
-global isr30_entry
-global isr31_entry
+global isr0
+global isr1
+global isr2
+global isr3
+global isr4
+global isr5
+global isr6
+global isr7
+global isr8
+global isr9
+global isr10
+global isr11
+global isr12
+global isr13
+global isr14
+global isr15
+global isr16
+global isr17
+global isr18
+global isr19
+global isr20
+global isr21
+global isr22
+global isr23
+global isr24
+global isr25
+global isr26
+global isr27
+global isr28
+global isr29
+global isr30
+global isr31
 
-isr0_entry:
+isr0:
   push byte 0
   push byte 0
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr1_entry:
+isr1:
   push byte 0
   push byte 1
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr2_entry:
+isr2:
   push byte 0
   push byte 2
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr3_entry:
+isr3:
   push byte 0
   push byte 3
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr4_entry:
+isr4:
   push byte 0
   push byte 4
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr5_entry:
+isr5:
   push byte 0
   push byte 5
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr6_entry:
+isr6:
   push byte 0
   push byte 6
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr7_entry:
+isr7:
   push byte 0
   push byte 7
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr8_entry:
+isr8:
   push byte 0
   push byte 8
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr9_entry:
+isr9:
   push byte 0
   push byte 9
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr10_entry:
+isr10:
   push byte 0
   push byte 10
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr11_entry:
+isr11:
   push byte 0
   push byte 11
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr12_entry:
+isr12:
   push byte 0
   push byte 12
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr13_entry:
+isr13:
   push byte 0
   push byte 13
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr14_entry:
+isr14:
   push byte 0
   push byte 14
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr15_entry:
+isr15:
   push byte 0
   push byte 15
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr16_entry:
+isr16:
   push byte 0
   push byte 16
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr17_entry:
+isr17:
   push byte 0
   push byte 17
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr18_entry:
+isr18:
   push byte 0
   push byte 18
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr19_entry:
+isr19:
   push byte 0
   push byte 19
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr20_entry:
+isr20:
   push byte 0
   push byte 20
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr21_entry:
+isr21:
   push byte 0
   push byte 21
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr22_entry:
+isr22:
   push byte 0
   push byte 22
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr23_entry:
+isr23:
   push byte 0
   push byte 23
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr24_entry:
+isr24:
   push byte 0
   push byte 24
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr25_entry:
+isr25:
   push byte 0
   push byte 25
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr26_entry:
+isr26:
   push byte 0
   push byte 26
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr27_entry:
+isr27:
   push byte 0
   push byte 27
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr28_entry:
+isr28:
   push byte 0
   push byte 28
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr29_entry:
+isr29:
   push byte 0
   push byte 29
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr30_entry:
+isr30:
   push byte 0
   push byte 30
-  jmp isr_entry
+  jmp isr_common_stub
 
-isr31_entry:
+isr31:
   push byte 0
   push byte 31
-  jmp isr_entry
+  jmp isr_common_stub

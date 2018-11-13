@@ -14,7 +14,7 @@ struct trapframe {
   unsigned int ecx;
   unsigned int eax;
 
-  // pushed by `isrx_entry`
+  // pushed by `isrx`
   unsigned int int_no;
   unsigned int err_code;
 
@@ -26,39 +26,39 @@ struct trapframe {
   unsigned int ss;
 };
 
-extern void isr0_entry(void);
-extern void isr1_entry(void);
-extern void isr2_entry(void);
-extern void isr3_entry(void);
-extern void isr4_entry(void);
-extern void isr5_entry(void);
-extern void isr6_entry(void);
-extern void isr7_entry(void);
-extern void isr8_entry(void);
-extern void isr9_entry(void);
-extern void isr10_entry(void);
-extern void isr11_entry(void);
-extern void isr12_entry(void);
-extern void isr13_entry(void);
-extern void isr14_entry(void);
-extern void isr15_entry(void);
-extern void isr16_entry(void);
-extern void isr17_entry(void);
-extern void isr18_entry(void);
-extern void isr19_entry(void);
-extern void isr20_entry(void);
-extern void isr21_entry(void);
-extern void isr22_entry(void);
-extern void isr23_entry(void);
-extern void isr24_entry(void);
-extern void isr25_entry(void);
-extern void isr26_entry(void);
-extern void isr27_entry(void);
-extern void isr28_entry(void);
-extern void isr29_entry(void);
-extern void isr30_entry(void);
-extern void isr31_entry(void);
+extern void isr0(void);
+extern void isr1(void);
+extern void isr2(void);
+extern void isr3(void);
+extern void isr4(void);
+extern void isr5(void);
+extern void isr6(void);
+extern void isr7(void);
+extern void isr8(void);
+extern void isr9(void);
+extern void isr10(void);
+extern void isr11(void);
+extern void isr12(void);
+extern void isr13(void);
+extern void isr14(void);
+extern void isr15(void);
+extern void isr16(void);
+extern void isr17(void);
+extern void isr18(void);
+extern void isr19(void);
+extern void isr20(void);
+extern void isr21(void);
+extern void isr22(void);
+extern void isr23(void);
+extern void isr24(void);
+extern void isr25(void);
+extern void isr26(void);
+extern void isr27(void);
+extern void isr28(void);
+extern void isr29(void);
+extern void isr30(void);
+extern void isr31(void);
 
-void isr_common(struct trapframe tf);
+void isr_handler(struct trapframe tf);
 
 #endif
