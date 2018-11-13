@@ -2,7 +2,7 @@ include ../Makefile.inc
 
 CFLAGS += -I../include -I.
 
-OBJS = kern.o vga.o printk.o
+OBJS = kern.o vga.o printk.o isr.o israsm.o idt.o
 
 all: $(OBJS)
 

@@ -8,6 +8,9 @@ OBJS = $(BOOT_DIR)/head.o \
 			 $(KERN_DIR)/kern.o \
 			 $(KERN_DIR)/vga.o \
 			 $(KERN_DIR)/printk.o \
+			 $(KERN_DIR)/idt.o \
+			 $(KERN_DIR)/isr.o \
+			 $(KERN_DIR)/israsm.o \
 
 all: minos.iso
 
