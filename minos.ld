@@ -1,12 +1,12 @@
 ENTRY(start)
 
 SECTIONS {
-  . = 1M;
+  . = 0x100000;
 
-  .boot :
+  /* ensure that the multiboot header is at the beginning */
+  .multiboot :
   {
-    /* ensure that the multiboot header is at the beginning */
-    *(.multiboot_header)
+    *(.multiboot.header)
   }
 
   .text :
@@ -14,8 +14,19 @@ SECTIONS {
     *(.text)
   }
 
+  .data ALIGN(0x1000) :
+  {
+    *(.data)
+    *(.rodata*)
+  }
+
   .bss ALIGN(0x1000) :
   {
     *(.bss)
+  }
+
+  /DISCARD/ : {
+    *(.eh_frame)
+    *(.comment*)
   }
 }
