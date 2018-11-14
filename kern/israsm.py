@@ -35,15 +35,18 @@ isr_common_stub = """\
 """
 print(isr_common_stub)
 
-for i in range(48):
+for i in range(256):
     print("isr%d:" % i)
-    print("  push byte 0")
-    print("  push byte %d" % i)
+    if i == 8 or (i >= 10 and i <= 14) or i == 17:
+        print("  push %d" % i)
+    else:
+        print("  push 0")
+        print("  push %d" % i)
     print("  jmp isr_common_stub")
     print()
 
 print("section .data")
 print("global isr_vectors")
 print("isr_vectors:")
-for i in range(48):
+for i in range(256):
     print("  dd isr%d" % i)

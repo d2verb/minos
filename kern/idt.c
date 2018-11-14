@@ -1,5 +1,6 @@
 #include <idt.h>
 #include <isr.h>
+#include <pic.h>
 #include <asm.h>
 #include <printk.h>
 
@@ -21,8 +22,9 @@ static void set_idtr(void) {
 }
 
 void idt_init(void) {
-  for (int i = 0; i < 48; i++)
+  for (int i = 0; i < 256; i++)
     set_idt(i, isr_vectors[i]);
+  pic_init();
   set_idtr();
   sti();
 }
