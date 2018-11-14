@@ -11,7 +11,7 @@ void isr_main(struct trapframe tf) {
   case IRQ0:
     tick++;
     if (tick % 100 == 0)
-      printk("tick: %d\n", tick);
+      printk("[timer] tick: %d\n", tick);
     break;
   }
 

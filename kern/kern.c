@@ -11,7 +11,7 @@ void main(void) {
 
   idt_init();
 
-  /* 100Hz (10msec) */
+  /* 100Hz (1 tick/10msec) */
   timer_init(100);
 
   for (;;) {}
