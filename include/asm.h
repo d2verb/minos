@@ -19,10 +19,10 @@ static inline unsigned short inb(unsigned short port) {
 }
 
 static inline void outb(unsigned short port, unsigned char data) {
-  asm volatile("outb %%al, %%dx"
+  asm volatile("outb %0, %1"
              :
-             : "a"(data), "d"(port)
-             : "%eax", "%edx");
+             : "a"(data), "Nd"(port)
+             :);
 }
 
 static inline unsigned short inw(unsigned short port) {

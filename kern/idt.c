@@ -21,7 +21,7 @@ static void set_idtr(void) {
 }
 
 void idt_init(void) {
-  for (int i = 0; i < 32; i++)
+  for (int i = 0; i < 48; i++)
     set_idt(i, isr_vectors[i]);
   set_idtr();
   sti();

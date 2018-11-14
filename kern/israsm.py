@@ -35,7 +35,7 @@ isr_common_stub = """\
 """
 print(isr_common_stub)
 
-for i in range(32):
+for i in range(48):
     print("isr%d:" % i)
     print("  push byte 0")
     print("  push byte %d" % i)
@@ -45,5 +45,5 @@ for i in range(32):
 print("section .data")
 print("global isr_vectors")
 print("isr_vectors:")
-for i in range(32):
+for i in range(48):
     print("  dd isr%d" % i)
