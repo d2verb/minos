@@ -11,10 +11,9 @@ static inline void cli(void) {
 
 static inline unsigned short inb(unsigned short port) {
   unsigned char res;
-  asm volatile("inb %%dx, %%al"
+  asm volatile("inb %1, %0"
              : "=a"(res)
-             : "d"(port)
-             : "%eax", "%edx");
+             : "Nd"(port));
   return res;
 }
 
@@ -23,22 +22,6 @@ static inline void outb(unsigned short port, unsigned char data) {
              :
              : "a"(data), "Nd"(port)
              :);
-}
-
-static inline unsigned short inw(unsigned short port) {
-  unsigned short res;
-  asm volatile("inw %%dx, %%ax"
-             : "=a"(res)
-             : "d"(port)
-             : "%eax", "%edx");
-  return res;
-}
-
-static inline void outw(unsigned short port, unsigned short data) {
-  asm volatile("outw %%ax, %%dx"
-             :
-             : "a"(data), "d"(port)
-             : "%eax", "%edx");
 }
 
 #endif
