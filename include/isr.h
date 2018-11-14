@@ -59,6 +59,8 @@ extern void isr29(void);
 extern void isr30(void);
 extern void isr31(void);
 
+extern unsigned int isr_vectors[32];
+
 void isr_handler(struct trapframe tf);
 
 #endif

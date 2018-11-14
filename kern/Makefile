@@ -4,7 +4,10 @@ CFLAGS += -I../include -I.
 
 OBJS = kern.o vga.o printk.o isr.o israsm.o idt.o
 
-all: $(OBJS)
+all: israsm.s $(OBJS)
+
+israsm.s: israsm.py
+	python israsm.py > israsm.s
 
 .c.o:
 	$(CC) $(CFLAGS) $< -c
@@ -13,4 +16,4 @@ all: $(OBJS)
 	$(AS) $(ASFLAGS) $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -f israsm.s $(OBJS)

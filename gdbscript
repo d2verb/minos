@@ -1,4 +1,4 @@
-b * 0x100220
+b * 0x100018
 set disassembly-flavor intel
 target remote :1234
 layout asm
