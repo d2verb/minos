@@ -27,7 +27,8 @@ struct trapframe {
 };
 
 extern unsigned int isr_vectors[256];
-
 void isr_handler(struct trapframe tf);
+
+#define IRQ0 32
 
 #endif

@@ -1,5 +1,6 @@
 #include <printk.h>
 #include <idt.h>
+#include <timer.h>
 #include <asm.h>
 
 void main(void) {
@@ -9,9 +10,11 @@ void main(void) {
   printk("main @ %x\n", (unsigned int)main);
 
   idt_init();
-  asm volatile("int $2");
-  asm volatile("int $3");
-  cli();
+
+  /* 100Hz (10msec) */
+  timer_init(100);
+
+  for (;;) {}
 
   return;
 }

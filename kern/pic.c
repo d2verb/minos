@@ -2,6 +2,12 @@
 #include <asm.h>
 
 void pic_init(void) {
+  unsigned char a1, a2;
+
+  /* save masks */
+  a1 = inb(PIC1_DATA);
+  a2 = inb(PIC2_DATA);
+
   // ICW1
   /* initialize PIC */
   outb(PIC1_COMMAND, 0x11);
@@ -23,6 +29,10 @@ void pic_init(void) {
   /* 8086 mode */
   outb(PIC1_DATA, 1);
   outb(PIC2_DATA, 1);
+
+  /* restore masks */
+  outb(PIC1_DATA, a1);
+  outb(PIC2_DATA, a2);
 }
 
 void pic_eoi(unsigned int irq) {
