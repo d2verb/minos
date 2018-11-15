@@ -2,19 +2,21 @@
 #include <idt.h>
 #include <timer.h>
 #include <asm.h>
+#include <mem.h>
 
-void main(void) {
+void main(unsigned int *mbi, unsigned int magic) {
   const char *message = "Starting minos!";
   printk("%s\n", message);
 
-  printk("main @ %x\n", (unsigned int)main);
-
   idt_init();
-
-  /* 100Hz (1 tick/10msec) */
   timer_init(100);
+  mem_init(mbi);
 
+  printk("alloc mem: 0x%x\n", boottime_alloc());
+  printk("alloc mem: 0x%x\n", boottime_alloc());
+  printk("alloc mem: 0x%x\n", boottime_alloc());
+
+  cli();
   for (;;) {}
-
   return;
 }

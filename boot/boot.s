@@ -42,6 +42,10 @@ section .text
 hi_start:
   ; setup stack
   mov esp, stack_top
+
+  push eax ; magic
+  push ebx ; multiboot info
+
   ; call c function
   call main
 

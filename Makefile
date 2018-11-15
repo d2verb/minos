@@ -13,6 +13,8 @@ OBJS = $(BOOT_DIR)/head.o \
 			 $(KERN_DIR)/israsm.o \
 			 $(KERN_DIR)/pic.o \
 			 $(KERN_DIR)/timer.o \
+			 $(KERN_DIR)/mem.o \
+			 $(KERN_DIR)/panic.o \
 
 all: minos.iso
 

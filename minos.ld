@@ -30,6 +30,8 @@ SECTIONS {
     *(.bss)
   }
 
+  PROVIDE(_kern_end = .);
+
   /DISCARD/ : {
     *(.eh_frame)
     *(.comment*)
