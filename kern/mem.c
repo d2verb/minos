@@ -1,7 +1,6 @@
 #include <multiboot2.h>
 #include <mem.h>
-#include <printk.h>
-#include <panic.h>
+#include <util.h>
 
 extern char _kern_end[];
 static unsigned char *alloc_top;

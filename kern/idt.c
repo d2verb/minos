@@ -2,7 +2,7 @@
 #include <isr.h>
 #include <pic.h>
 #include <asm.h>
-#include <printk.h>
+#include <util.h>
 
 static gatedesc_t idt[IDT_ENTRIES];
 static idtr_t idtr;

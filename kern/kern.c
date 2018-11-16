@@ -1,4 +1,4 @@
-#include <printk.h>
+#include <util.h>
 #include <idt.h>
 #include <timer.h>
 #include <asm.h>

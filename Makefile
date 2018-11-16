@@ -7,14 +7,13 @@ OBJS = $(BOOT_DIR)/head.o \
 			 $(BOOT_DIR)/boot.o \
 			 $(KERN_DIR)/kern.o \
 			 $(KERN_DIR)/vga.o \
-			 $(KERN_DIR)/printk.o \
 			 $(KERN_DIR)/idt.o \
 			 $(KERN_DIR)/isr.o \
 			 $(KERN_DIR)/israsm.o \
 			 $(KERN_DIR)/pic.o \
 			 $(KERN_DIR)/timer.o \
 			 $(KERN_DIR)/mem.o \
-			 $(KERN_DIR)/panic.o \
+			 $(KERN_DIR)/util.o \
 
 all: minos.iso
 

@@ -1,4 +1,13 @@
+#include <util.h>
+#include <asm.h>
 #include <vga.h>
+
+void panic(const char *msg) {
+  printk("%s\n", msg);
+
+  cli();
+  for (;;) {}
+}
 
 static int cur_x;
 static int cur_y = VGA_HEIGHT;
