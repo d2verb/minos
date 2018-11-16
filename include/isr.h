@@ -26,6 +26,8 @@ struct trapframe {
   unsigned int ss;
 };
 
+typedef struct trapframe trapframe_t;
+
 extern unsigned int isr_vectors[256];
 void isr_handler(struct trapframe tf);
 

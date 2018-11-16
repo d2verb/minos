@@ -6,12 +6,7 @@ struct multiboot_tag {
   unsigned int size;
 };
 
-struct multiboot_tag_basic_meminfo {
-  unsigned int type;
-  unsigned int size;
-  unsigned int mem_lower;
-  unsigned int mem_upper;
-};
+typedef struct multiboot_tag multiboot_tag_t;
 
 struct multiboot_mmap_entry {
   unsigned long long addr;
@@ -24,6 +19,8 @@ struct multiboot_mmap_entry {
   unsigned int zero;
 } __attribute__((packed));
 
+typedef struct multiboot_mmap_entry multiboot_mmap_entry_t;
+
 struct multiboot_tag_mmap {
   unsigned int type;
   unsigned int size;
@@ -31,6 +28,8 @@ struct multiboot_tag_mmap {
   unsigned int entry_version;
   struct multiboot_mmap_entry entries[0];
 };
+
+typedef struct multiboot_tag_mmap multiboot_tag_mmap_t;
 
 #define MULTIBOOT_TAG_END           0
 #define MULTIBOOT_TAG_BASIC_MEMINFO 4

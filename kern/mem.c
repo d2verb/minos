@@ -22,23 +22,23 @@ void *boottime_alloc(void) {
 void mem_init(unsigned int *mbi) {
   /* Find available ram area starting at 1MB
    * and get the area length */
-  struct multiboot_tag *tag;
-  struct multiboot_tag_mmap *mmap_tag;
-  struct multiboot_mmap_entry *ent;
+  multiboot_tag_t *tag;
+  multiboot_tag_mmap_t *mmap_tag;
+  multiboot_mmap_entry_t *ent;
 
   unsigned int mem_start;
   unsigned int mem_len;
-  for (tag = (struct multiboot_tag *)(mbi + 2);
+  for (tag = (multiboot_tag_t *)(mbi + 2);
        tag->type != MULTIBOOT_TAG_END;
-       tag = (struct multiboot_tag *)((unsigned char *)tag + ((tag->size + 7) & ~7)))
+       tag = (multiboot_tag_t *)((unsigned char *)tag + ((tag->size + 7) & ~7)))
   {
     if (tag->type != MULTIBOOT_TAG_MMAP)
       continue;
 
-    mmap_tag = (struct multiboot_tag_mmap *)tag;
+    mmap_tag = (multiboot_tag_mmap_t *)tag;
     for (ent = mmap_tag->entries;
          (unsigned char *)ent < (unsigned char *)mmap_tag + mmap_tag->size;
-         ent = (struct multiboot_mmap_entry *)((unsigned int)ent + mmap_tag->entry_size))
+         ent = (multiboot_mmap_entry_t *)((unsigned int)ent + mmap_tag->entry_size))
     {
       if ((ent->addr >> 32) & 0xffffffff != 0)
         continue;

@@ -3,7 +3,7 @@
 #include <pic.h>
 #include <timer.h>
 
-void isr_main(struct trapframe tf) {
+void isr_main(trapframe_t tf) {
   switch (tf.int_no) {
   default:
     printk("interrupt occured: %d\n", tf.int_no);

@@ -4,8 +4,8 @@
 #include <asm.h>
 #include <printk.h>
 
-static struct gatedesc idt[IDT_ENTRIES];
-static struct idtr idtr;
+static gatedesc_t idt[IDT_ENTRIES];
+static idtr_t idtr;
 
 static void set_idt(int n, unsigned int handler) {
   idt[n].offset_lo = handler & 0xffff;
@@ -17,7 +17,7 @@ static void set_idt(int n, unsigned int handler) {
 
 static void set_idtr(void) {
   idtr.base = (unsigned int)&idt;
-  idtr.limit = 256 * sizeof(struct gatedesc) - 1;
+  idtr.limit = 256 * sizeof(gatedesc_t) - 1;
   asm volatile("lidtl (%0)" : : "r"(&idtr));
 }
 
