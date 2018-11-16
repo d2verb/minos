@@ -59,11 +59,9 @@ not_found:
 found:
 
   printk("Available RAM found: base_addr = 0x%x, length = %uKB\n", mem_start, mem_len / 1024);
+  if (_kern_end >= mem_start)
+    mem_start = _kern_end;
 
-  if ((unsigned int)_kern_end < mem_start)
-    alloc_top = (unsigned char *)ROUNDUP(mem_start + KERN_BASE, PAGE_SIZE);
-  else
-    alloc_top = (unsigned char *)ROUNDUP(_kern_end + KERN_BASE, PAGE_SIZE);
-
+  alloc_top = (unsigned char *)ROUNDUP(mem_start + KERN_BASE, PAGE_SIZE);
   alloc_end = (unsigned char *)ROUNDDOWN(mem_start + mem_len + KERN_BASE, PAGE_SIZE);
 }
