@@ -103,3 +103,8 @@ void printk(const char *fmt, ...) {
     }
   }
 }
+
+void memset(uchar *addr, uchar ch, uint n) {
+  for (uint i = 0; i < n; i++)
+    addr[i] = ch;
+}

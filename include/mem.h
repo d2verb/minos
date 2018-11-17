@@ -14,6 +14,10 @@
 #define PTSHIFT   12
 #define PDSHIFT   22
 
+#define PDX(n)    ((n >> PDSHIFT) & 0x3ff)
+#define PTX(n)    ((n >> PTSHIFT) & 0x3ff)
+#define POF(n)    (n & 0xfff)
+
 #define PTE_P     (1 << 0)
 #define PTE_W     (1 << 1)
 #define PTE_U     (1 << 2)
@@ -35,5 +39,8 @@
 
 void *boot_alloc(uint n);
 void mem_init(uint *mbi);
+
+typedef unsigned int pde_t;
+typedef unsigned int pte_t;
 
 #endif

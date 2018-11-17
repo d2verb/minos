@@ -8,6 +8,16 @@ extern char _kern_end[];
 static uchar *nextfree;
 static uint npages;
 
+struct page {
+  struct page *next;
+};
+
+typedef struct page page_t;
+
+static page_t *pages;
+static page_t *free_pages;
+
+pde_t *kern_dir;
 
 /* Allocate page unit memory.
  * This allocator is only unsed in boottime */
@@ -79,7 +89,7 @@ found:
   printk("Available RAM found: base_addr = 0x%x, length = %uKB\n", mem_start, mem_len / 1024);
 
   /* how many pages we can use. */
-  npages = ROUNDDOWN(mem_start + mem_len, PAGE_SIZE);
+  npages = ROUNDDOWN(mem_start + mem_len, PAGE_SIZE) / PAGE_SIZE;
 
   /* mem_start is physical address!! */
   if (V2P(_kern_end) >= mem_start)
@@ -90,4 +100,12 @@ found:
 
 void mem_init(uint *mbi) {
   mem_detect(mbi);
+
+  kern_dir = boot_alloc(PAGE_SIZE);
+  memset(kern_dir, 0, PAGE_SIZE);
+  printk("kern_dir = 0x%x\n", kern_dir);
+
+  pages = boot_alloc(npages * sizeof(page_t));
+  memset(pages, 0, ROUNDUP(npages * sizeof(page_t), PAGE_SIZE));
+  printk("pages = 0x%x\n", pages);
 }

@@ -14,8 +14,6 @@ void main(uint *mbi, uint magic) {
   mem_init(mbi);
 
   printk("alloced mem: 0x%x\n", boot_alloc(1));
-  printk("alloced mem: 0x%x\n", boot_alloc(2));
-  printk("alloced mem: 0x%x\n", boot_alloc(3));
 
   cli();
   for (;;) {}
