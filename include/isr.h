@@ -2,33 +2,33 @@
 #define ISR_H_
 
 struct trapframe {
-  unsigned int ds;
+  uint ds;
 
   // pushed by `pusha`
-  unsigned int edi;
-  unsigned int esi;
-  unsigned int ebp;
-  unsigned int esp;
-  unsigned int ebx;
-  unsigned int edx;
-  unsigned int ecx;
-  unsigned int eax;
+  uint edi;
+  uint esi;
+  uint ebp;
+  uint esp;
+  uint ebx;
+  uint edx;
+  uint ecx;
+  uint eax;
 
   // pushed by `isrx`
-  unsigned int int_no;
-  unsigned int err_code;
+  uint int_no;
+  uint err_code;
 
   // pushed by the processor
-  unsigned int eip;
-  unsigned int cs;
-  unsigned int eflags;
-  unsigned int useresp;
-  unsigned int ss;
+  uint eip;
+  uint cs;
+  uint eflags;
+  uint useresp;
+  uint ss;
 };
 
 typedef struct trapframe trapframe_t;
 
-extern unsigned int isr_vectors[256];
+extern uint isr_vectors[256];
 void isr_handler(struct trapframe tf);
 
 #define IRQ0 32

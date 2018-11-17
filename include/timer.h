@@ -1,8 +1,8 @@
 #ifndef TIMER_H_
 #define TIMER_H_
 
-extern unsigned int tick;
+extern uint tick;
 
-void timer_init(unsigned int freq);
+void timer_init(uint freq);
 
 #endif

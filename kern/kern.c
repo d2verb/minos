@@ -1,10 +1,11 @@
+#include <type.h>
 #include <util.h>
 #include <idt.h>
 #include <timer.h>
 #include <asm.h>
 #include <mem.h>
 
-void main(unsigned int *mbi, unsigned int magic) {
+void main(uint *mbi, uint magic) {
   const char *message = "Starting minos!";
   printk("%s\n", message);
 
@@ -12,9 +13,9 @@ void main(unsigned int *mbi, unsigned int magic) {
   timer_init(100);
   mem_init(mbi);
 
-  printk("alloc mem: 0x%x\n", boottime_alloc());
-  printk("alloc mem: 0x%x\n", boottime_alloc());
-  printk("alloc mem: 0x%x\n", boottime_alloc());
+  printk("alloced mem: 0x%x\n", boot_alloc(1));
+  printk("alloced mem: 0x%x\n", boot_alloc(2));
+  printk("alloced mem: 0x%x\n", boot_alloc(3));
 
   cli();
   for (;;) {}

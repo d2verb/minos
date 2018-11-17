@@ -1,3 +1,4 @@
+#include <type.h>
 #include <util.h>
 #include <asm.h>
 #include <vga.h>
@@ -40,7 +41,7 @@ static void print_str(const char *s) {
     print_ch(*s++);
 }
 
-static void print_int(unsigned int val, int base, int sign) {
+static void print_int(uint val, int base, int sign) {
   static char digits[] = "0123456789abcdef";
   char buf[12];
   int i;
@@ -61,12 +62,12 @@ static void print_int(unsigned int val, int base, int sign) {
 }
 
 void printk(const char *fmt, ...) {
-  unsigned int *ap;
+  uint *ap;
   int state;
   char c;
   
   state = 0;
-  ap = (unsigned int *)&fmt + 1;
+  ap = (uint *)&fmt + 1;
   
   for (int i = 0; fmt[i]; i++) {
     c = fmt[i];

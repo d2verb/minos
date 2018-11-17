@@ -9,6 +9,6 @@
 #define PIC2_DATA       (PIC2+1)
 
 void pic_init(void);
-void pic_eoi(unsigned int irq);
+void pic_eoi(uint irq);
 
 #endif

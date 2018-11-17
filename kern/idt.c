@@ -1,3 +1,4 @@
+#include <type.h>
 #include <idt.h>
 #include <isr.h>
 #include <pic.h>
@@ -7,7 +8,7 @@
 static gatedesc_t idt[IDT_ENTRIES];
 static idtr_t idtr;
 
-static void set_idt(int n, unsigned int handler) {
+static void set_idt(int n, uint handler) {
   idt[n].offset_lo = handler & 0xffff;
   idt[n].offset_hi = (handler >> 16) & 0xffff;
   idt[n].zero = 0;
@@ -16,7 +17,7 @@ static void set_idt(int n, unsigned int handler) {
 }
 
 static void set_idtr(void) {
-  idtr.base = (unsigned int)&idt;
+  idtr.base = (uint)&idt;
   idtr.limit = 256 * sizeof(gatedesc_t) - 1;
   asm volatile("lidtl (%0)" : : "r"(&idtr));
 }

@@ -1,8 +1,9 @@
+#include <type.h>
 #include <pic.h>
 #include <asm.h>
 
 void pic_init(void) {
-  unsigned char a1, a2;
+  uchar a1, a2;
 
   /* save masks */
   a1 = inb(PIC1_DATA);
@@ -35,7 +36,7 @@ void pic_init(void) {
   outb(PIC2_DATA, a2);
 }
 
-void pic_eoi(unsigned int irq) {
+void pic_eoi(uint irq) {
   if (irq >= 8)
     outb(PIC2_COMMAND, 0x20);
   outb(PIC1_COMMAND, 0x20);

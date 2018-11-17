@@ -1,6 +1,7 @@
+#include <type.h>
 #include <vga.h>
 
-void vga_write_with_prop(int x, int y, char ch, char prop) {
+void vga_write_with_prop(int x, int y, char ch, uchar prop) {
   *((char *)VGA_ADDR + (x + y * VGA_WIDTH) * 2) = ch;
   *((char *)VGA_ADDR + (x + y * VGA_WIDTH) * 2 + 1) = prop;
 }

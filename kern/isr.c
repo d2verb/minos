@@ -1,3 +1,4 @@
+#include <type.h>
 #include <util.h>
 #include <isr.h>
 #include <pic.h>

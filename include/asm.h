@@ -9,15 +9,15 @@ static inline void cli(void) {
   asm volatile("cli");
 }
 
-static inline unsigned short inb(unsigned short port) {
-  unsigned char res;
+static inline ushort inb(ushort port) {
+  uchar res;
   asm volatile("inb %1, %0"
              : "=a"(res)
              : "Nd"(port));
   return res;
 }
 
-static inline void outb(unsigned short port, unsigned char data) {
+static inline void outb(ushort port, uchar data) {
   asm volatile("outb %0, %1"
              :
              : "a"(data), "Nd"(port)

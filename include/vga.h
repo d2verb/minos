@@ -26,7 +26,7 @@ enum VgaColor {
 
 #define VGA_COLOR(fg, bg) ((bg) << 4 | (fg))
 
-void vga_write_with_prop(int x, int y, char ch, char prop);
+void vga_write_with_prop(int x, int y, char ch, uchar prop);
 void vga_write(int x, int y, char ch);
 void vga_clear_with(char ch);
 
