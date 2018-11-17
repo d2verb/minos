@@ -8,11 +8,13 @@
 #define KERN_BASE 0xc0000000  /* 3GB */
 #define KERN_SIZE 0x40000000  /* 1GB */
 
-#define P2V(p)    ((p) + KERN_BASE)
-#define V2P(v)    ((v) - KERN_BASE)
+#define P2KV(p)    ((p) + KERN_BASE)
+#define KV2P(v)    ((v) - KERN_BASE)
 
 #define PTSHIFT   12
 #define PDSHIFT   22
+
+#define PTADDR(n) (n & ~((1 << PTSHIFT) - 1))
 
 #define PDX(n)    ((n >> PDSHIFT) & 0x3ff)
 #define PTX(n)    ((n >> PTSHIFT) & 0x3ff)
@@ -37,7 +39,6 @@
 #define PDE_PS    (1 << 7)
 #define PDE_G     (1 << 8)
 
-void *boot_alloc(uint n);
 void mem_init(uint *mbi);
 
 typedef unsigned int pde_t;

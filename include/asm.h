@@ -24,4 +24,8 @@ static inline void outb(ushort port, uchar data) {
              :);
 }
 
+static inline void set_cr3(uint pa) {
+  asm volatile("movl %0, %%cr3" : : "r"(pa));
+}
+
 #endif

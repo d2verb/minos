@@ -1,5 +1,5 @@
 # What's this
-mini os
+mini os (heavily inspired by xv6)
 
 # How to run this
 ```

@@ -8,4 +8,6 @@ typedef unsigned long       ulong;
 typedef unsigned long long  ullong;
 typedef long long           llong;
 
+#define NULL (0)
+
 #endif
