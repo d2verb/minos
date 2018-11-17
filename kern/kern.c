@@ -13,8 +13,6 @@ void main(uint *mbi, uint magic) {
   timer_init(100);
   mem_init(mbi);
 
-  printk("alloced mem: 0x%x\n", boot_alloc(1));
-
   cli();
   for (;;) {}
   return;

@@ -108,3 +108,11 @@ void memset(uchar *addr, uchar ch, uint n) {
   for (uint i = 0; i < n; i++)
     addr[i] = ch;
 }
+
+inline int min(int a, int b) {
+  return a < b ? a : b;
+}
+
+inline uint umin(uint a, uint b) {
+  return a < b ? a : b;
+}
