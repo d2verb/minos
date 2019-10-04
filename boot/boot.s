@@ -4,7 +4,7 @@ global start
 extern main
 
 ; constants
-STACK_SIZE    equ 4096
+STACK_SIZE    equ 16384
 KERN_BASE     equ 0xc0000000
 
 ; lower .text section
