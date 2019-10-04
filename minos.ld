@@ -1,5 +1,6 @@
 ENTRY(start)
 
+/* 3GB */
 KERN_BASE = 0xc0000000;
 
 SECTIONS {

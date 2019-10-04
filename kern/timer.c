@@ -12,4 +12,6 @@ void timer_init(unsigned int freq) {
   outb(0x43, 0x36);
   outb(0x40, lo);
   outb(0x40, hi);
+
+  printk("timer_init() done!\n");
 }

@@ -28,4 +28,6 @@ void idt_init(void) {
   pic_init();
   set_idtr();
   sti();
+
+  printk("idt_init() done!\n");
 }

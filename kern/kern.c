@@ -5,14 +5,14 @@
 #include <asm.h>
 #include <mem.h>
 
-void main(uint *mbi, uint magic) {
+void main(uint *multiboot_info, uint magic) {
   const char *message = "Starting minos!";
   printk("%s\n", message);
 
   idt_init();
   timer_init(100);
-  mem_init(mbi);
-
+  mem_init(multiboot_info);
+  
   cli();
   for (;;) {}
   return;

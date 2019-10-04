@@ -29,7 +29,7 @@ build:
 	cd $(KERN_DIR) && make
 
 qemu: minos.iso
-	qemu-system-x86_64 -drive format=raw,file=$< -m 512M
+	qemu-system-x86_64 -drive format=raw,file=$< -m 4G
 
 qemu-gdb: minos.iso
 	qemu-system-x86_64 -drive format=raw,file=$< -nographic -serial mon:stdio -s -S

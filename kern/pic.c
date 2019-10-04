@@ -34,6 +34,8 @@ void pic_init(void) {
   /* restore masks */
   outb(PIC1_DATA, a1);
   outb(PIC2_DATA, a2);
+
+  printk("pic_init() done!\n");
 }
 
 void pic_eoi(uint irq) {

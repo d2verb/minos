@@ -1,6 +1,10 @@
 #ifndef ASM_H_
 #define ASM_H_
 
+static inline void hlt(void) {
+  asm volatile("hlt");
+}
+
 static inline void sti(void) {
   asm volatile("sti");
 }

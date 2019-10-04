@@ -8,8 +8,8 @@
 #define KERN_BASE 0xc0000000  /* 3GB */
 #define KERN_SIZE 0x40000000  /* 1GB */
 
-#define P2KV(p)    ((p) + KERN_BASE)
-#define KV2P(v)    ((v) - KERN_BASE)
+#define P2V(p)    ((uint)(p) + KERN_BASE)
+#define V2P(v)    ((uint)(v) - KERN_BASE)
 
 #define PTSHIFT   12
 #define PDSHIFT   22
@@ -38,6 +38,10 @@
 #define PDE_A     (1 << 5)
 #define PDE_PS    (1 << 7)
 #define PDE_G     (1 << 8)
+
+#define KB        (1024)
+#define MB        (1024 * 1024)
+#define GB        (1024 * 1024 * 1024)
 
 void mem_init(uint *mbi);
 
