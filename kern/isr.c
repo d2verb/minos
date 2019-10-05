@@ -17,9 +17,22 @@ void isr_main(trapframe_t tf) {
     break;
   case IRQ1:
     ch = kbd_read_enc_buf();
-    if (!(ch & (1 << 7)) && key_map[ch] != 0) {
-      printk("%c", key_map[0][ch]);
+
+    switch (ch) {
+    case 0x2a:
+    case 0x36:
+      key_state.shift = 1;
+      break;
+    case 0xaa:
+    case 0xb6:
+      key_state.shift = 0;
+      break;
     }
+
+    if (key_map[key_state.shift][ch] != 0) {
+      printk("%c", key_map[key_state.shift][ch]);
+    }
+
     break;
   }
 
