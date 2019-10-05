@@ -14,6 +14,7 @@ OBJS = $(BOOT_DIR)/head.o \
 			 $(KERN_DIR)/timer.o \
 			 $(KERN_DIR)/mem.o \
 			 $(KERN_DIR)/util.o \
+			 $(KERN_DIR)/kbd.o \
 
 all: minos.iso
 

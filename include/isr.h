@@ -32,5 +32,7 @@ extern uint isr_vectors[256];
 void isr_handler(struct trapframe tf);
 
 #define IRQ0 32
+#define IRQ1 33
+#define IRQ2 34
 
 #endif

@@ -98,6 +98,9 @@ void printk(const char *fmt, ...) {
           print_int((int)*ap, 16, 0);
           ap++;
           break;
+        case 'c':
+          print_ch((char)*ap);
+          break;
       }
       state = 0;
     }

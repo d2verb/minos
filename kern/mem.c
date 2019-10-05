@@ -11,6 +11,13 @@ static uint npages;
 
 pde_t *kern_pgdir;
 
+struct page {
+  struct page *next;
+};
+
+// buddies[i] : containing buddies having 4*2^i byte memory area
+static struct page *buddies[11];
+
 /* Allocate page unit memory.
  * This allocator is only unsed in boottime */
 static void *boot_alloc(uint nbytes) {
@@ -124,21 +131,46 @@ static void page_map(pde_t *pgdir,
   }
 }
 
+//
+// Buddy System
+//
+
+// buddy system use [boot_alloc(0), 0xffffffff)
+void buddy_init(void) {
+  uint va = (uint )boot_alloc(0);
+  struct page *pg = NULL;
+
+  for (; va < 0xfffff000; va += PAGE_SIZE) {
+    pg = (struct page *)va;
+    pg->next = buddies[10];
+    buddies[10] = pg;
+  }
+
+  pg = (struct page *)(0xfffff000);
+  pg->next = buddies[10];
+  buddies[10] = pg;
+}
+
 void mem_init(uint *multiboot_info) {
   mem_detect(multiboot_info);
 
   // create new page table
   kern_pgdir = boot_alloc(PAGE_SIZE);
   memset((uchar *)kern_pgdir, 0, PAGE_SIZE);
-  
+
   uint n = ROUNDDOWN((uint)0xffffffff - KERN_BASE, PAGE_SIZE);
 
   // create new mapping (4KB granularity)
-  // TODO: 0xffff0000 doesn't have mapping...
   page_map(kern_pgdir, KERN_BASE, n, 0, PTE_P | PTE_W);
+  pte_t *pte = pgdir_get_pte(kern_pgdir, 0xfffff000);
+  *pte = PTE_P | PTE_W | V2P(0xfffff000);
+
   page_map(kern_pgdir, 0, 1 * MB, 0, PTE_P | PTE_W);
 
   set_cr3(V2P(kern_pgdir));
+
+  // init buddy system
+  buddy_init();
 
   printk("mem_init() done!\n");
 }
